@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>AssetAlign — Benefits Broker Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function(){ emailjs.init('kX8q18hmRaom62pMz'); })();
+    window.addEventListener('load', function() {
+      emailjs.send('service_jy3zs68', 'template_a3slvpn', {
+        to_email: 'support@assetalign.net',
+        message: 'Someone just opened the AssetAlign Broker Deck — assetalign-broker-deck.netlify.app',
+        time: new Date().toLocaleString()
+      });
+    });
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0d1f33;
+      --navy2:  #162b45;
+      --navy3:  #1e3a57;
+      --gold:   #f5a623;
+      --gold2:  #e8c56a;
+      --gold3:  #c9843a;
+      --cream:  #f8f5ef;
+      --white:  #ffffff;
+      --text:   #1a2d42;
+      --muted:  #5a6a7a;
+      --light:  #eef2f7;
+      --green:  #27ae60;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV DOTS ── */
+    .nav-dots {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      padding: 0;
+    }
+
+    .nav-dot.active {
+      background: var(--gold);
+      transform: scale(1.4);
+    }
+
+    .nav-dot:hover { background: rgba(255,255,255,0.7); }
+
+    /* ── SLIDE BASE ── */
+    .slide {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .slide { padding: 50px 32px; }
+    }
+
+    /* ── SLIDE 1: HERO ── */
+    #slide-1 {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, #0a3d6b 100%);
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    #slide-1::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(245,166,35,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #slide-1::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      border: 2px solid rgba(245,166,35,0.15);
+      pointer-events: none;
+    }
+
+    .slide-1-inner {
+      max-width: 680px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 52px;
+    }
+
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .logo-name span { color: var(--gold); }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 44px;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .pill-outline {
+      border: 1.5px solid rgba(245,166,35,0.5);
+      color: var(--gold2);
+    }
+
+    .pill-fill {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .slide-num {
+      position: absolute;
+      bottom: 36px;
+      right: 80px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+    }
+
+    /* ── SLIDE 2: PROBLEM ── */
+    #slide-2 {
+      background: var(--cream);
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold3);
+      margin-bottom: 14px;
+    }
+
+    .section-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 48px;
+    }
+
+    .section-h2 span { color: var(--gold3); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 44px;
+    }
+
+    @media (max-width: 800px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+
+    .stat-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px 28px;
+      border-top: 4px solid var(--gold);
+      box-shadow: 0 4px 24px rgba(13,31,51,0.08);
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .stat-number span { color: var(--gold3); font-size: 32px; }
+
+    .stat-label {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .problem-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 800px) {
+      .problem-bottom { grid-template-columns: 1fr; }
+    }
+
+    .problem-item {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      box-shadow: 0 2px 12px rgba(13,31,51,0.06);
+    }
+
+    .problem-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(245,166,35,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .problem-text h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .problem-text p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── SLIDE 3: HOW IT WORKS ── */
+    #slide-3 {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 100%);
+    }
+
+    #slide-3 .section-h2 { color: var(--white); }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+
+    @media (max-width: 900px) {
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(245,166,35,0.4), transparent);
+    }
+
+    .step-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(245,166,35,0.2);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform 0.3s, background 0.3s;
+      position: relative;
+    }
+
+    .step-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.09);
+    }
+
+    .step-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 16px rgba(245,166,35,0.35);
+    }
+
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--gold2);
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+    }
+
+    /* ── SLIDE 4: EMPLOYEE EXPERIENCE ── */
+    #slide-4 {
+      background: var(--cream);
+      padding: 52px 80px;
+    }
+
+    /* ── screen clips ── */
+    .screen-clips-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+
+    .clip-window {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 30px rgba(13,31,51,0.12);
+      border: 1px solid rgba(13,31,51,0.07);
+    }
+
+    .clip-bar {
+      background: #ebebeb;
+      padding: 8px 12px;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .cd { width: 9px; height: 9px; border-radius: 50%; }
+    .cd-r { background: #ff5f57; }
+    .cd-y { background: #febc2e; }
+    .cd-g { background: #28c840; }
+
+    .clip-url {
+      flex: 1;
+      background: var(--white);
+      border-radius: 4px;
+      padding: 3px 10px;
+      font-size: 10px;
+      color: #999;
+      margin-left: 6px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .clip-body {
+      padding: 16px 14px;
+      background: #f5f5f3;
+      font-family: -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    .clip-caption {
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* exp bottom bullets */
+    .exp-bullets {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .exp-bullet {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .exp-bullet-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .exp-bullet h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+
+    .exp-bullet p {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .exp-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .flow-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(13,31,51,0.06);
+      border-left: 4px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .flow-step.active-flow { border-left-color: var(--gold); }
+
+    .flow-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .flow-step.active-flow .flow-num {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .flow-text h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .flow-text p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── SLIDE 5: ADVISOR MATCH ── */
+    #slide-5 {
+      background: linear-gradient(150deg, var(--navy) 0%, #0a3d6b 100%);
+    }
+
+    .match-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .match-layout { grid-template-columns: 1fr; }
+    }
+
+    .match-left .section-h2 { color: var(--white); margin-bottom: 20px; }
+
+    .match-left p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .advisor-logos {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .advisor-logo-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(245,166,35,0.2);
+      border-radius: 12px;
+      padding: 14px 22px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      font-weight: 500;
+    }
+
+    .thank-you-frame {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 60px rgba(0,0,0,0.35);
+    }
+
+    .thank-you-bar {
+      background: #f0f0f0;
+      padding: 10px 16px;
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .thank-you-img {
+      width: 100%;
+      display: block;
+    }
+
+    .match-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .match-bullet {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .check-icon svg { width: 12px; height: 12px; }
+
+    .match-bullet p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ── SLIDE 6: BROKER TOOLS ── */
+    #slide-6 {
+      background: var(--cream);
+    }
+
+    .broker-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .broker-layout { grid-template-columns: 1fr; }
+    }
+
+    .broker-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .broker-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 22px 24px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      box-shadow: 0 3px 16px rgba(13,31,51,0.08);
+    }
+
+    .broker-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--navy3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .broker-card-text h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+
+    .broker-card-text p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .portal-preview {
+      background: var(--navy);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(13,31,51,0.18);
+    }
+
+    .portal-header {
+      background: var(--navy2);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(245,166,35,0.2);
+    }
+
+    .portal-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .portal-logo span { color: var(--gold); }
+
+    .portal-badge {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--gold);
+      border: 1px solid rgba(245,166,35,0.4);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    .portal-body {
+      padding: 24px;
+    }
+
+    .portal-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .portal-stat {
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+
+    .portal-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .portal-stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+
+    .portal-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .portal-item {
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .portal-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .portal-dot.green { background: var(--green); }
+    .portal-dot.gold  { background: var(--gold); }
+    .portal-dot.blue  { background: #4a90d9; }
+
+    .portal-item-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .portal-item-right {
+      margin-left: auto;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    /* ── SLIDE 7: CTA ── */
+    #slide-7 {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 50%, #0a3d6b 100%);
+      align-items: center;
+      text-align: center;
+    }
+
+    #slide-7::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(245,166,35,0.1) 0%, transparent 70%);
+    }
+
+    .cta-inner {
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .cta-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .cta-h2 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto 44px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 44px;
+      text-align: left;
+    }
+
+    @media (max-width: 800px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    .why-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(245,166,35,0.18);
+      border-radius: 14px;
+      padding: 24px 20px;
+    }
+
+    .why-icon {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .why-card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gold2);
+      margin-bottom: 8px;
+    }
+
+    .why-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 16px 36px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245,166,35,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-weight: 500;
+      font-size: 15px;
+      padding: 16px 36px;
+      border-radius: 40px;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-2px);
+    }
+
+    .contact-info {
+      margin-top: 36px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .contact-info a {
+      color: var(--gold2);
+      text-decoration: none;
+    }
+
+    .contact-info a:hover { text-decoration: underline; }
+
+    /* ── DIVIDER ACCENT ── */
+    .gold-line {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    /* ── MOBILE RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .slide { padding: 36px 20px 56px; }
+      #slide-4 { padding: 36px 20px 56px; }
+      .slide-num { right: 20px; bottom: 24px; }
+
+      /* Hide nav dots — too small on phone */
+      .nav-dots { display: none; }
+
+      /* Hero */
+      .hero-sub { font-size: 15px; }
+      .pill-row { gap: 8px; }
+      .pill { font-size: 12px; padding: 7px 14px; }
+
+      /* Stats */
+      .stat-number { font-size: 40px; }
+
+      /* Steps — single column */
+      .steps-grid { grid-template-columns: 1fr !important; }
+      .steps-grid::before { display: none; }
+
+      /* Screen clips — single column, show only first 2 */
+      .screen-clips-row { grid-template-columns: 1fr; }
+      .screen-clips-row > div:last-child { display: none; }
+
+      /* Exp bullets — 2 columns */
+      .exp-bullets { grid-template-columns: repeat(2, 1fr); }
+
+      /* Wellness credits — 2 columns */
+      .wellness-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .wellness-bottom-grid { grid-template-columns: 1fr !important; }
+
+      /* Employer flex fund — stack vertically */
+      .flex-fund-layout { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .flex-projections-header { grid-template-columns: repeat(3, 1fr) !important; }
+
+      /* Why grid on CTA */
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* CTA buttons */
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; text-align: center; }
+
+      /* Match layout */
+      .match-layout { gap: 32px; }
+    }
+
+    @media (max-width: 420px) {
+      .exp-bullets { grid-template-columns: 1fr; }
+      .wellness-cards-grid { grid-template-columns: 1fr !important; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── SCROLL HINT ── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.35);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.3);
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      transform: rotate(45deg);
+    }
+
+    /* ── SLIDE 9: PROPOSAL GENERATOR (built into the deck) ── */
+    #slide-gen { background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 100%); align-items: center; }
+    .gen-inner { max-width: 620px; width: 100%; margin: 0 auto; position: relative; z-index: 1; }
+    .gen-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; text-align: center; }
+    .gen-h2 { font-family: 'Playfair Display', serif; font-size: clamp(26px,3.6vw,40px); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 14px; text-align: center; }
+    .gen-h2 em { font-style: italic; color: var(--gold); }
+    .gen-sub { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.6; text-align: center; max-width: 480px; margin: 0 auto 28px; }
+    .gen-card { background: var(--white); border-radius: 16px; padding: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
+    .gen-field { margin-bottom: 16px; }
+    .gen-field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+    .gen-field label .opt { color: var(--muted); font-weight: 400; }
+    .gen-field input { width: 100%; padding: 12px 14px; border: 1.5px solid #d8e0ea; border-radius: 10px; font-size: 15px; font-family: inherit; color: var(--text); background: #fbfcfe; }
+    .gen-field input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(245,166,35,0.15); background: #fff; }
+    .gen-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .gen-reassure { display: flex; gap: 11px; align-items: flex-start; background: rgba(39,174,96,0.08); border: 1px solid rgba(39,174,96,0.25); border-radius: 10px; padding: 12px 14px; margin: 18px 0 22px; }
+    .gen-reassure .ic { flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; margin-top: 1px; }
+    .gen-reassure p { font-size: 13.5px; color: #1c5a41; line-height: 1.45; margin: 0; }
+    .gen-btn { display: block; width: 100%; padding: 15px 24px; border: none; border-radius: 11px; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer; background: linear-gradient(135deg, var(--gold) 0%, var(--gold3) 100%); color: var(--navy); box-shadow: 0 8px 20px rgba(245,166,35,0.3); transition: transform 0.12s; }
+    .gen-btn:hover { transform: translateY(-1px); }
+    .gen-err { color: #c8102e; font-size: 13px; font-weight: 600; margin-top: 10px; display: none; }
+    .gen-err.show { display: block; }
+    .gen-result { display: none; margin-top: 24px; border-top: 1px dashed #d8e0ea; padding-top: 22px; }
+    .gen-result.show { display: block; }
+    .gen-result h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+    .gen-result .rsub { font-size: 13.5px; color: var(--muted); margin-bottom: 14px; }
+    .gen-linkbox { display: flex; gap: 9px; flex-wrap: wrap; }
+    .gen-linkbox input { flex: 1 1 240px; padding: 12px 14px; border: 1.5px solid #d8e0ea; border-radius: 10px; font-size: 13px; background: var(--light); color: var(--text); }
+    .gen-mini { flex: 0 0 auto; padding: 12px 16px; border-radius: 10px; border: none; font-family: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; }
+    .gen-mini.copy { background: var(--navy); color: #fff; }
+    .gen-mini.open { background: #fff; color: var(--navy); border: 1.5px solid var(--navy); text-decoration: none; display: inline-flex; align-items: center; }
+    .gen-copied { display: none; font-size: 13px; color: var(--green); font-weight: 600; margin-top: 11px; }
+    .gen-copied.show { display: block; }
+    @media (max-width: 520px) { .gen-two { grid-template-columns: 1fr; } }
+    @keyframes wsblink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots" id="navDots">
+  <button class="nav-dot active" onclick="goTo(0)" title="What We Help Pay For"></button>
+  <button class="nav-dot" onclick="goTo(1)" title="Overview"></button>
+  <button class="nav-dot" onclick="goTo(2)" title="The Problem"></button>
+  <button class="nav-dot" onclick="goTo(3)" title="How It Works"></button>
+  <button class="nav-dot" onclick="goTo(4)" title="Employee Experience"></button>
+  <button class="nav-dot" onclick="goTo(5)" title="Advisor Match"></button>
+  <button class="nav-dot" onclick="goTo(6)" title="Employee Wellness Credits"></button>
+  <button class="nav-dot" onclick="goTo(7)" title="Employer Flex Fund"></button>
+  <button class="nav-dot" onclick="goTo(8)" title="Get Started"></button>
+  <button class="nav-dot" onclick="goTo(9)" title="Generate a Proposal"></button>
+</nav>
+
+<!-- ── SLIDE 1: WHAT WE CAN HELP PAY FOR (cold open) ── -->
+<section class="slide" id="slide-expenses" style="background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 100%);">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 50% 45%, rgba(245,166,35,0.08) 0%, transparent 70%);pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;max-width:820px;margin:0 auto;text-align:center;">
+    <div class="logo-row" style="justify-content:center;margin-bottom:34px;">
+      <div class="logo-mark">A</div>
+      <div class="logo-name">Asset<span>Align</span></div>
+    </div>
+    <div style="font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;">Zero Cost. Real Dollars Back.</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4.6vw,52px);font-weight:700;color:#fff;line-height:1.12;margin-bottom:30px;">Here's what we can help pay for.</h2>
+    <div style="min-height:1.2em;margin-bottom:20px;">
+      <span id="expTyped" style="font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,52px);font-weight:700;color:var(--gold);line-height:1.1;"></span><span style="display:inline-block;width:4px;height:0.9em;background:var(--gold);vertical-align:-4px;margin-left:5px;animation:wsblink 1s step-end infinite;"></span>
+    </div>
+    <div id="expCloud" style="display:flex;flex-wrap:wrap;gap:9px 15px;justify-content:center;align-items:center;min-height:140px;max-width:780px;margin:0 auto;transition:opacity .6s ease;"></div>
+    <style>
+      #expCloud.fade{opacity:0;}
+      .expchip{opacity:0;transform:translateY(13px) scale(.9);animation:expland .5s cubic-bezier(.2,.8,.3,1) forwards;font-weight:600;white-space:nowrap;}
+      @keyframes expland{to{opacity:1;transform:translateY(0) scale(1);}}
+      .expchip.g{color:var(--gold2);} .expchip.w{color:#fff;} .expchip.m{color:rgba(255,255,255,.5);}
+    </style>
+    <p style="margin:36px auto 0;max-width:560px;font-size:19px;font-weight:600;color:#fff;line-height:1.5;">What other benefit can do that?</p>
+  </div>
+  <span class="slide-num">1 / 10</span>
+</section>
+
+<!-- ── SLIDE 2: HERO ── -->
+<section class="slide" id="slide-1">
+  <div class="slide-1-inner">
+    <div class="logo-row">
+      <div class="logo-mark">A</div>
+      <div class="logo-name">Asset<span>Align</span></div>
+    </div>
+    <div class="hero-eyebrow">Benefits Broker Overview</div>
+    <h1 class="hero-h1">
+      A Financial Wellness<br/>
+      Benefit <em>for Your Clients</em>
+    </h1>
+    <p class="hero-sub">
+      AssetAlign delivers a free, personalized financial plan to every employee — matched to a vetted fiduciary advisor. Zero cost to employers. Minimal lift for HR. Real engagement your clients can see.
+    </p>
+    <div class="pill-row">
+      <div class="pill pill-fill">No Cost to Employer</div>
+      <div class="pill pill-outline">Fiduciary Advisors</div>
+      <div class="pill pill-outline">Complements Existing Benefits</div>
+      <div class="pill pill-outline">Measurable Engagement</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+  <span class="slide-num">2 / 10</span>
+</section>
+
+<!-- ── SLIDE 2: THE PROBLEM ── -->
+<section class="slide" id="slide-2">
+  <div class="section-eyebrow">The Problem</div>
+  <h2 class="section-h2">Financial Stress Is Costing Your<br/><span>Clients Right Now</span></h2>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">76<span>%</span></div>
+      <div class="stat-label">of employees say financial stress impacts their work performance and focus daily</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">$<span></span>4.7K</div>
+      <div class="stat-label">average cost per employee per year in lost productivity tied to financial stress</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">80<span>%</span></div>
+      <div class="stat-label">of financial wellness programs see low or no measurable engagement after launch</div>
+    </div>
+  </div>
+  <div class="problem-bottom">
+    <div class="problem-item">
+      <div class="problem-icon">🧩</div>
+      <div class="problem-text">
+        <h4>Disconnected Benefits</h4>
+        <p>Existing programs sit in silos — employees don't know where to start, so they don't start at all.</p>
+      </div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-icon">📊</div>
+      <div class="problem-text">
+        <h4>No Measurable ROI</h4>
+        <p>Employers pay for wellness benefits they can't measure, making it hard to justify at renewal time.</p>
+      </div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-icon">🚪</div>
+      <div class="problem-text">
+        <h4>High Barrier to Entry</h4>
+        <p>Employees who need guidance most are often the least likely to seek it out on their own.</p>
+      </div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-icon">🔄</div>
+      <div class="problem-text">
+        <h4>Retention Risk</h4>
+        <p>Financially stressed employees are 2x more likely to be looking for a new job within the year.</p>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">3 / 10</span>
+</section>
+
+<!-- ── SLIDE 3: HOW IT WORKS ── -->
+<section class="slide" id="slide-3">
+  <div class="section-eyebrow" style="color:var(--gold2)">The Solution</div>
+  <h2 class="section-h2">How AssetAlign Works</h2>
+  <div class="gold-line"></div>
+  <!-- Connector line -->
+  <div style="display:flex; align-items:flex-start; gap:0; margin-bottom:0; position:relative;">
+    <div class="steps-grid" style="grid-template-columns: repeat(4,1fr);">
+
+      <div class="step-card">
+        <div class="step-badge">🤝</div>
+        <div class="step-title">Your Profile, Your Match</div>
+        <p class="step-desc">We build a financial profile for each employee based on their individual situation — then match them with a vetted fiduciary advisor specifically suited to where they are in life.</p>
+        <div style="margin-top:14px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.1); font-size:11px; color:rgba(255,255,255,0.45); line-height:1.5;">🎓 Algorithm developed in partnership with members of the MIT Laboratory for Financial Engineering</div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge">📋</div>
+        <div class="step-title">Free Financial Plan</div>
+        <p class="step-desc">Each matched employee receives a <strong style="color:var(--gold2)">personalized financial plan at no cost</strong> — built around their goals, life stage, and financial picture.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge">🙋</div>
+        <div class="step-title">Voluntary Engagement</div>
+        <p class="step-desc">Choosing to work with their advisor is <strong style="color:var(--gold2)">100% voluntary</strong>. Employees who do engage do so on their own terms — no pressure, no mandate.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge">💰</div>
+        <div class="step-title">Earn Wellness Credits</div>
+        <p class="step-desc">As employees engage, they earn <strong style="color:var(--gold2)">Financial Wellness Credits</strong> redeemable for real-life goals — life insurance, a home down payment, and more.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Credit use examples -->
+  <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+    <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(245,166,35,0.25); border-radius:10px; padding:12px 22px; font-size:13px; color:rgba(255,255,255,0.75); display:flex; align-items:center; gap:10px;">
+      <span style="font-size:18px;">🏠</span> Home Down Payment
+    </div>
+    <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(245,166,35,0.25); border-radius:10px; padding:12px 22px; font-size:13px; color:rgba(255,255,255,0.75); display:flex; align-items:center; gap:10px;">
+      <span style="font-size:18px;">🛡️</span> Life Insurance Premium
+    </div>
+    <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(245,166,35,0.25); border-radius:10px; padding:12px 22px; font-size:13px; color:rgba(255,255,255,0.75); display:flex; align-items:center; gap:10px;">
+      <span style="font-size:18px;">🎓</span> Education Funding
+    </div>
+    <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(245,166,35,0.25); border-radius:10px; padding:12px 22px; font-size:13px; color:rgba(255,255,255,0.75); display:flex; align-items:center; gap:10px;">
+      <span style="font-size:18px;">📜</span> Estate Planning
+    </div>
+    <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(245,166,35,0.25); border-radius:10px; padding:12px 22px; font-size:13px; color:rgba(255,255,255,0.75); display:flex; align-items:center; gap:10px;">
+      <span style="font-size:18px;">💳</span> Debt Reduction
+    </div>
+    <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(245,166,35,0.25); border-radius:10px; padding:12px 22px; font-size:13px; color:rgba(255,255,255,0.75); display:flex; align-items:center; gap:10px;">
+      <span style="font-size:18px;">🧾</span> Tax Filing &amp; Planning
+    </div>
+  </div>
+  <span class="slide-num">4 / 10</span>
+</section>
+
+<!-- ── SLIDE 4: EMPLOYEE EXPERIENCE ── -->
+<section class="slide" id="slide-4">
+  <div class="section-eyebrow">Inside the Platform</div>
+  <h2 class="section-h2" style="margin-bottom:32px;">The Employee Experience</h2>
+  <!-- Three screen clips -->
+  <div class="screen-clips-row">
+
+    <!-- Clip 1: Personalized Welcome -->
+    <div>
+      <div class="clip-window">
+        <div class="clip-bar">
+          <div class="cd cd-r"></div><div class="cd cd-y"></div><div class="cd cd-g"></div>
+          <div class="clip-url">app.assetalign.net</div>
+        </div>
+        <div class="clip-body">
+          <div style="font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:2px;font-family:-apple-system,sans-serif;">Asset<span style="color:#c8a84b;">Align</span></div>
+          <div style="font-size:11px;font-weight:500;color:#1a3a5c;margin-bottom:10px;font-family:-apple-system,sans-serif;">One Benefit. Zero Cost. Real Returns.</div>
+          <div style="height:0.5px;background:rgba(0,0,0,0.08);margin-bottom:10px;"></div>
+          <p style="font-size:11px;color:#1a1a1a;margin-bottom:5px;line-height:1.5;font-family:-apple-system,sans-serif;">Hi Sarah — your employer has partnered with AssetAlign to connect you with a trusted financial advisor at no cost to you.</p>
+          <p style="font-size:10px;color:#666;margin-bottom:12px;line-height:1.5;font-family:-apple-system,sans-serif;">We've pulled your info from your employer. Let's take 2 minutes to get you set up.</p>
+          <div style="background:#1a3a5c;color:#fff;font-size:11px;font-weight:500;padding:9px;border-radius:7px;text-align:center;font-family:-apple-system,sans-serif;">Get started →</div>
+        </div>
+      </div>
+      <div class="clip-caption">Personalized Welcome</div>
+    </div>
+
+    <!-- Clip 2: Priority Selection -->
+    <div>
+      <div class="clip-window">
+        <div class="clip-bar">
+          <div class="cd cd-r"></div><div class="cd cd-y"></div><div class="cd cd-g"></div>
+          <div class="clip-url">app.assetalign.net</div>
+        </div>
+        <div class="clip-body">
+          <div style="font-size:12px;font-weight:500;color:#1a1a1a;margin-bottom:3px;font-family:-apple-system,sans-serif;">What's your biggest financial focus?</div>
+          <div style="font-size:10px;color:#666;margin-bottom:10px;font-family:-apple-system,sans-serif;">Your #1 shapes everything we do for you.</div>
+          <!-- Priority cards -->
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="border:2px solid #c8a84b;border-radius:9px;padding:8px 10px;display:flex;align-items:center;gap:8px;background:#fff;position:relative;">
+              <div style="position:absolute;top:-7px;left:10px;background:#c8a84b;color:#fff;font-size:9px;font-weight:500;padding:1px 7px;border-radius:99px;">Suggested for you</div>
+              <div style="width:30px;height:30px;border-radius:6px;background:#e6f1fb;display:flex;align-items:center;justify-content:center;font-size:14px;">🏠</div>
+              <div><div style="font-size:11px;font-weight:500;color:#1a1a1a;font-family:-apple-system,sans-serif;">Buy a home</div><div style="font-size:10px;color:#666;font-family:-apple-system,sans-serif;">Save for a down payment</div></div>
+              <div style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#1a3a5c;color:#fff;font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;">1</div>
+            </div>
+            <div style="border:0.5px solid rgba(0,0,0,0.1);border-radius:9px;padding:8px 10px;display:flex;align-items:center;gap:8px;background:#fff;">
+              <div style="width:30px;height:30px;border-radius:6px;background:#eaf3de;display:flex;align-items:center;justify-content:center;font-size:14px;">🌅</div>
+              <div><div style="font-size:11px;font-weight:500;color:#1a1a1a;font-family:-apple-system,sans-serif;">Retire comfortably</div><div style="font-size:10px;color:#666;font-family:-apple-system,sans-serif;">Max contributions, plan timeline</div></div>
+              <div style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#e5e5e5;color:#666;font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;">2</div>
+            </div>
+            <div style="border:0.5px solid rgba(0,0,0,0.1);border-radius:9px;padding:8px 10px;display:flex;align-items:center;gap:8px;background:#fff;">
+              <div style="width:30px;height:30px;border-radius:6px;background:#faeeda;display:flex;align-items:center;justify-content:center;font-size:14px;">💳</div>
+              <div><div style="font-size:11px;font-weight:500;color:#1a1a1a;font-family:-apple-system,sans-serif;">Pay down debt</div><div style="font-size:10px;color:#666;font-family:-apple-system,sans-serif;">Student loans, credit cards</div></div>
+              <div style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#e5e5e5;color:#666;font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;">3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clip-caption">Employee-Driven Priorities</div>
+    </div>
+
+    <!-- Clip 3: Advisor Match -->
+    <div>
+      <div class="clip-window">
+        <div class="clip-bar">
+          <div class="cd cd-r"></div><div class="cd cd-y"></div><div class="cd cd-g"></div>
+          <div class="clip-url">app.assetalign.net</div>
+        </div>
+        <div class="clip-body">
+          <div style="display:inline-block;background:#eaf3de;color:#3b6d11;font-size:10px;font-weight:500;padding:2px 10px;border-radius:99px;margin-bottom:8px;font-family:-apple-system,sans-serif;">Match found</div>
+          <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">
+            <div style="width:44px;height:44px;border-radius:50%;background:#e6f1fb;color:#1a3a5c;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;border:2px solid #fff;outline:2px solid #c8a84b;flex-shrink:0;">MT</div>
+            <div>
+              <div style="font-size:12px;font-weight:500;color:#1a1a1a;font-family:-apple-system,sans-serif;">Michael R. Torres, CFP®</div>
+              <div style="font-size:10px;color:#666;font-family:-apple-system,sans-serif;">📍 Chicago, IL</div>
+              <div style="display:flex;gap:4px;margin-top:3px;">
+                <span style="font-size:9px;padding:2px 6px;border-radius:99px;background:#eaf3de;color:#27500a;font-family:-apple-system,sans-serif;">Home buying</span>
+                <span style="font-size:9px;padding:2px 6px;border-radius:99px;background:#e6f1fb;color:#0c447c;font-family:-apple-system,sans-serif;">First-time buyers</span>
+              </div>
+            </div>
+          </div>
+          <div style="background:#1a3a5c;border-radius:7px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <div style="font-size:10px;color:#a8bfd4;font-family:-apple-system,sans-serif;">Your match score</div>
+            <div style="font-size:14px;font-weight:500;color:#c8a84b;font-family:-apple-system,sans-serif;">97% match</div>
+          </div>
+          <div style="display:flex;gap:6px;margin-bottom:10px;">
+            <div style="flex:1;background:#f5f5f3;border-radius:6px;padding:7px;text-align:center;"><div style="font-size:13px;font-weight:500;color:#1a3a5c;font-family:-apple-system,sans-serif;">340+</div><div style="font-size:9px;color:#666;font-family:-apple-system,sans-serif;">Clients</div></div>
+            <div style="flex:1;background:#f5f5f3;border-radius:6px;padding:7px;text-align:center;"><div style="font-size:13px;font-weight:500;color:#1a3a5c;font-family:-apple-system,sans-serif;">14 yrs</div><div style="font-size:9px;color:#666;font-family:-apple-system,sans-serif;">Experience</div></div>
+            <div style="flex:1;background:#f5f5f3;border-radius:6px;padding:7px;text-align:center;"><div style="font-size:13px;font-weight:500;color:#1a3a5c;font-family:-apple-system,sans-serif;">4.9 ★</div><div style="font-size:9px;color:#666;font-family:-apple-system,sans-serif;">Rating</div></div>
+          </div>
+          <div style="background:#1a3a5c;color:#fff;font-size:10px;font-weight:500;padding:8px;border-radius:7px;text-align:center;font-family:-apple-system,sans-serif;">Schedule my 30-minute plan session →</div>
+        </div>
+      </div>
+      <div class="clip-caption">Advisor Match</div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bullets -->
+  <div class="exp-bullets">
+    <div class="exp-bullet">
+      <div class="exp-bullet-icon">👤</div>
+      <div>
+        <h4>Personalized from screen one</h4>
+        <p>Employee name and employer info are pre-populated — zero friction to start.</p>
+      </div>
+    </div>
+    <div class="exp-bullet">
+      <div class="exp-bullet-icon">🎯</div>
+      <div>
+        <h4>Goal-driven experience</h4>
+        <p>The entire flow adapts around the employee's #1 financial priority.</p>
+      </div>
+    </div>
+    <div class="exp-bullet">
+      <div class="exp-bullet-icon">🤝</div>
+      <div>
+        <h4>Matched to a vetted fiduciary</h4>
+        <p>Full advisor profile — bio, credentials, specialties, client stats, and a direct scheduling link.</p>
+      </div>
+    </div>
+    <div class="exp-bullet">
+      <div class="exp-bullet-icon">⏱️</div>
+      <div>
+        <h4>Under 6 minutes start to finish</h4>
+        <p>Designed to be completed on a lunch break — high completion rates, measurable from day one.</p>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">5 / 10</span>
+</section>
+
+<!-- ── SLIDE 5: ADVISOR MATCH ── -->
+<section class="slide" id="slide-5">
+  <div class="match-layout">
+    <div class="match-left">
+      <div class="section-eyebrow" style="color:var(--gold2)">Trusted Advisor Network</div>
+      <h2 class="section-h2">Matched to a Fiduciary.<br/>Not Just a Form.</h2>
+      <p>When the assessment is complete, employees aren't left waiting. They're immediately introduced to a vetted financial professional from our national network — matched to their specific needs.</p>
+
+      <!-- MIT badge -->
+      <div style="background:linear-gradient(135deg, rgba(245,166,35,0.15), rgba(245,166,35,0.05)); border:1px solid rgba(245,166,35,0.4); border-radius:16px; padding:22px 24px; margin-bottom:28px;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+          <div style="font-size:28px; flex-shrink:0;">🎓</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold);">Research-Backed Matching</div>
+        </div>
+        <div style="font-size:16px; font-weight:600; color:var(--white); line-height:1.4; margin-bottom:8px;">
+          Built in partnership with members of the<br/>MIT Laboratory for Financial Engineering
+        </div>
+        <div style="font-size:13px; color:rgba(255,255,255,0.6); line-height:1.65;">
+          Our proprietary matching algorithm applies quantitative financial modeling to pair each employee with the advisor whose expertise, methodology, and client profile align most precisely with their individual financial position — not just their zip code.
+        </div>
+      </div>
+      <div class="match-bullets">
+        <div class="match-bullet">
+          <div class="check-icon">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0d1f33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p>All advisors are fiduciaries — legally required to act in the employee's best interest</p>
+        </div>
+        <div class="match-bullet">
+          <div class="check-icon">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0d1f33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p>National network of vetted fiduciaries spanning wealth management, retirement planning, tax strategy, estate planning, and more</p>
+        </div>
+        <div class="match-bullet">
+          <div class="check-icon">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0d1f33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p>The first financial plan is delivered at no cost to the employee or employer</p>
+        </div>
+        <div class="match-bullet">
+          <div class="check-icon">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0d1f33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p>Employees are contacted directly — no HR follow-up or coordination required</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="thank-you-frame">
+        <div class="thank-you-bar">
+          <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
+          <div class="screen-url" style="background:#e5e5e5; font-size:11px; color:#666; padding:4px 12px; flex:1; border-radius:6px; margin-left:8px;">app.assetalign.net / match</div>
+        </div>
+        <!-- Thank you screen — inline mockup -->
+        <div style="padding:28px 24px; font-family:-apple-system,'Segoe UI',sans-serif; background:#fff;">
+          <div style="font-size:22px; font-weight:600; color:#1a1a1a; margin-bottom:10px;">Thank you</div>
+          <p style="font-size:13px; color:#1a1a1a; margin-bottom:6px; line-height:1.6;"><strong>We're excited to introduce you to a financial professional from our network!</strong></p>
+          <p style="font-size:12px; color:#555; margin-bottom:24px; line-height:1.6;">Keep a lookout for calls and emails from your advisory firm...</p>
+
+          <div style="border:1px solid rgba(0,0,0,0.1); border-radius:12px; padding:24px; text-align:center; margin-bottom:20px;">
+            <div style="width:56px; height:56px; border-radius:50%; background:#e6f1fb; color:#1a3a5c; font-size:20px; font-weight:600; display:flex; align-items:center; justify-content:center; margin:0 auto 12px;">MT</div>
+            <div style="font-size:16px; font-weight:600; color:#1a1a1a; margin-bottom:2px;">Michael R. Torres, CFP®</div>
+            <div style="font-size:12px; color:#666; margin-bottom:14px;">Wealth Management &amp; Financial Planning</div>
+            <div style="height:1px; background:rgba(0,0,0,0.08); margin-bottom:14px;"></div>
+            <div style="font-size:13px; color:#1a3a5c; font-style:italic; line-height:1.6; margin-bottom:14px;">"I look forward to helping you build a financial plan that works for your life."</div>
+            <div style="background:#1a3a5c; color:#fff; font-size:13px; font-weight:500; padding:10px 20px; border-radius:8px; display:inline-block;">(833) 555-0192</div>
+          </div>
+
+          <div style="background:#f5f5f3; border-radius:8px; padding:12px 14px; font-size:11px; color:#666; line-height:1.6; text-align:center;">
+            Your advisor will reach out within 1 business day to schedule your complimentary 30-minute session.
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
+        <div class="advisor-logo-card">Wealth Management</div>
+        <div class="advisor-logo-card">Retirement Planning</div>
+        <div class="advisor-logo-card">Tax &amp; Estate Strategy</div>
+        <div class="advisor-logo-card">+ National Network</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">6 / 10</span>
+</section>
+
+<!-- ── SLIDE 6: EMPLOYEE WELLNESS CREDITS ── -->
+<section class="slide" id="slide-6" style="background:var(--cream);">
+  <div class="section-eyebrow">For Employees</div>
+  <h2 class="section-h2" style="margin-bottom:12px;">Engagement That<br/><span style="color:var(--gold3);">Earns Real Rewards</span></h2>
+  <p style="font-size:16px; color:var(--muted); line-height:1.7; max-width:680px; margin-bottom:40px;">As employees engage with their advisor and take action on their financial plan, they accumulate <strong style="color:var(--navy);">Financial Wellness Credits</strong> — redeemable for milestones that actually matter in their lives.</p>
+
+  <div class="wellness-cards-grid" style="display:grid; grid-template-columns:repeat(6,1fr); gap:18px; margin-bottom:44px;">
+    <div style="background:var(--white); border-radius:16px; padding:28px 20px; text-align:center; box-shadow:0 4px 20px rgba(13,31,51,0.08); border-top:4px solid var(--gold);">
+      <div style="font-size:36px; margin-bottom:12px;">🏠</div>
+      <div style="font-size:14px; font-weight:600; color:var(--navy); margin-bottom:6px;">Home Down Payment</div>
+      <div style="font-size:12px; color:var(--muted); line-height:1.5;">Credits applied toward purchasing a first home</div>
+    </div>
+    <div style="background:var(--white); border-radius:16px; padding:28px 20px; text-align:center; box-shadow:0 4px 20px rgba(13,31,51,0.08); border-top:4px solid var(--gold);">
+      <div style="font-size:36px; margin-bottom:12px;">🛡️</div>
+      <div style="font-size:14px; font-weight:600; color:var(--navy); margin-bottom:6px;">Life Insurance</div>
+      <div style="font-size:12px; color:var(--muted); line-height:1.5;">Fund premiums for life coverage through the platform</div>
+    </div>
+    <div style="background:var(--white); border-radius:16px; padding:28px 20px; text-align:center; box-shadow:0 4px 20px rgba(13,31,51,0.08); border-top:4px solid var(--gold);">
+      <div style="font-size:36px; margin-bottom:12px;">🎓</div>
+      <div style="font-size:14px; font-weight:600; color:var(--navy); margin-bottom:6px;">Education Funding</div>
+      <div style="font-size:12px; color:var(--muted); line-height:1.5;">Apply credits toward 529 contributions or tuition</div>
+    </div>
+    <div style="background:var(--white); border-radius:16px; padding:28px 20px; text-align:center; box-shadow:0 4px 20px rgba(13,31,51,0.08); border-top:4px solid var(--gold);">
+      <div style="font-size:36px; margin-bottom:12px;">📜</div>
+      <div style="font-size:14px; font-weight:600; color:var(--navy); margin-bottom:6px;">Estate Planning</div>
+      <div style="font-size:12px; color:var(--muted); line-height:1.5;">Access wills, trusts, and estate planning services through the platform</div>
+    </div>
+    <div style="background:var(--white); border-radius:16px; padding:28px 20px; text-align:center; box-shadow:0 4px 20px rgba(13,31,51,0.08); border-top:4px solid var(--gold);">
+      <div style="font-size:36px; margin-bottom:12px;">💳</div>
+      <div style="font-size:14px; font-weight:600; color:var(--navy); margin-bottom:6px;">Debt Reduction</div>
+      <div style="font-size:12px; color:var(--muted); line-height:1.5;">Accelerate payoff of student loans or high-interest debt</div>
+    </div>
+    <div style="background:var(--white); border-radius:16px; padding:28px 20px; text-align:center; box-shadow:0 4px 20px rgba(13,31,51,0.08); border-top:4px solid var(--gold);">
+      <div style="font-size:36px; margin-bottom:12px;">🧾</div>
+      <div style="font-size:14px; font-weight:600; color:var(--navy); margin-bottom:6px;">Tax Filing &amp; Planning</div>
+      <div style="font-size:12px; color:var(--muted); line-height:1.5;">Credits applied toward professional tax preparation and year-round planning</div>
+    </div>
+  </div>
+
+  <div class="wellness-bottom-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+    <div style="background:var(--white); border-radius:12px; padding:22px 24px; display:flex; gap:16px; align-items:flex-start; box-shadow:0 2px 10px rgba(13,31,51,0.06);">
+      <div style="width:40px;height:40px;border-radius:10px;background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🤝</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px;">Earned Through Action</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;">Credits accumulate as employees complete their plan, meet with their advisor, and take financial steps — not just for signing up.</div>
+      </div>
+    </div>
+    <div style="background:var(--white); border-radius:12px; padding:22px 24px; display:flex; gap:16px; align-items:flex-start; box-shadow:0 2px 10px rgba(13,31,51,0.06);">
+      <div style="width:40px;height:40px;border-radius:10px;background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🙋</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px;">Completely Voluntary</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;">No mandates, no pressure. Employees engage at their own pace — the credits make participation worth their time.</div>
+      </div>
+    </div>
+    <div style="background:var(--white); border-radius:12px; padding:22px 24px; display:flex; gap:16px; align-items:flex-start; box-shadow:0 2px 10px rgba(13,31,51,0.06);">
+      <div style="width:40px;height:40px;border-radius:10px;background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📈</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px;">Drives Sustained Engagement</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;">Unlike one-time benefits, credits give employees a reason to keep coming back — which is what drives measurable outcomes for your clients.</div>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide-num">7 / 10</span>
+</section>
+
+<!-- ── SLIDE 7: EMPLOYER FLEX FUND ── -->
+<section class="slide" id="slide-7" style="background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 100%);">
+
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 70% 50%, rgba(245,166,35,0.08) 0%, transparent 70%);pointer-events:none;"></div>
+
+  <div class="flex-fund-layout" style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1;">
+
+    <!-- Left -->
+    <div>
+      <div style="font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:14px;">For Employers</div>
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,46px); font-weight:700; color:var(--white); line-height:1.15; margin-bottom:20px;">
+        Real Dollars Back<br/>to Your <span style="color:var(--gold);">Employer Clients</span>.<br/>Every Year.
+      </h2>
+      <div style="width:48px;height:3px;background:var(--gold);border-radius:2px;margin-bottom:24px;"></div>
+      <p style="font-size:16px; color:rgba(255,255,255,0.65); line-height:1.75; margin-bottom:28px;">
+        When employees engage with their matched fiduciary and grow their assets, the advisors generate revenue. AssetAlign shares a portion of that revenue back to the employer as the <strong style="color:var(--gold);">Employer Flex Fund</strong> — real money they can use however they choose.
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px;">
+        <div style="display:flex; gap:14px; align-items:flex-start;">
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0d1f33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p style="font-size:14px; color:rgba(255,255,255,0.72); line-height:1.6; margin:0;">Offset rising healthcare &amp; medical benefit costs</p>
+        </div>
+        <div style="display:flex; gap:14px; align-items:flex-start;">
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0d1f33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p style="font-size:14px; color:rgba(255,255,255,0.72); line-height:1.6; margin:0;">Reinvest in other employee benefits or programs</p>
+        </div>
+        <div style="display:flex; gap:14px; align-items:flex-start;">
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0d1f33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p style="font-size:14px; color:rgba(255,255,255,0.72); line-height:1.6; margin:0;">Put directly back into company savings — no restrictions</p>
+        </div>
+        <div style="display:flex; gap:14px; align-items:flex-start;">
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0d1f33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p style="font-size:14px; color:rgba(255,255,255,0.72); line-height:1.6; margin:0;">Grows automatically as employee engagement and assets increase year over year</p>
+        </div>
+      </div>
+
+      <div style="background:rgba(245,166,35,0.1); border:1px solid rgba(245,166,35,0.3); border-radius:12px; padding:18px 22px;">
+        <div style="font-size:13px; font-weight:600; color:var(--gold); margin-bottom:6px; letter-spacing:0.04em;">ONE BENEFIT. ZERO COST. REAL RETURNS.</div>
+        <div style="font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6;">No open enrollment. No HR administration. No ongoing employer lift required. The fund builds itself as employees engage.</div>
+      </div>
+    </div>
+
+    <!-- Right — Calculator-style visual -->
+    <div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(245,166,35,0.2); border-radius:20px; padding:32px; box-shadow:0 16px 60px rgba(0,0,0,0.3);">
+
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px;">Employer Flex Fund — Sample Projections</div>
+
+        <div class="flex-projections-header" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:24px;">
+          <div style="text-align:center; background:rgba(255,255,255,0.05); border-radius:10px; padding:14px 10px;">
+            <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--gold);">40%</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.45); margin-top:3px;">Avg Participation</div>
+          </div>
+          <div style="text-align:center; background:rgba(255,255,255,0.05); border-radius:10px; padding:14px 10px;">
+            <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--gold);">$250K</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.45); margin-top:3px;">Avg Investable Assets</div>
+          </div>
+          <div style="text-align:center; background:rgba(255,255,255,0.05); border-radius:10px; padding:14px 10px;">
+            <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--gold);">8%</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.45); margin-top:3px;">Annual Asset Growth</div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.04); border-radius:10px; padding:14px 18px;">
+            <div>
+              <div style="font-size:14px; font-weight:600; color:rgba(255,255,255,0.85);">50 Employees</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:2px;">Small employer</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--gold);">~$25K</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.4);">returned / year</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(245,166,35,0.08); border:1px solid rgba(245,166,35,0.25); border-radius:10px; padding:14px 18px;">
+            <div>
+              <div style="font-size:14px; font-weight:600; color:rgba(255,255,255,0.85);">250 Employees</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:2px;">Mid-size employer</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--gold);">~$125K</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.4);">returned / year</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.04); border-radius:10px; padding:14px 18px;">
+            <div>
+              <div style="font-size:14px; font-weight:600; color:rgba(255,255,255,0.85);">1,000 Employees</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:2px;">Large employer</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--gold);">~$500K</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.4);">returned / year</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px; padding:12px 16px; background:rgba(255,255,255,0.03); border-radius:8px; border-top:1px solid rgba(255,255,255,0.07);">
+          <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">Projections based on 40% avg participation rate, $250K avg investable assets per participating employee, 8% annual market growth. Actual returns vary. <a href="https://assetalignhrcalculator.netlify.app" target="_blank" style="color:rgba(245,166,35,0.7); text-decoration:none;">Run your client's numbers →</a></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <span class="slide-num">8 / 10</span>
+</section>
+
+<!-- ── SLIDE 8: CTA ── -->
+<section class="slide" id="slide-8">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Why AssetAlign for Your Book of Business</div>
+    <h2 class="cta-h2">A Benefit That <em>Adds Value</em><br/>Without Adding Cost</h2>
+    <p class="cta-sub">AssetAlign gives your clients something they've never been able to offer before — a personalized financial plan for every employee, at zero cost. That's a conversation-starter at every renewal.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🆓</div>
+        <h4>No Cost to Add</h4>
+        <p>AssetAlign is free for employers and employees. It enhances your benefits package without touching the budget.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📈</div>
+        <h4>Measurable Engagement</h4>
+        <p>Track participation, plan completions, and advisor connections. Give your clients data to justify their benefits spend.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔌</div>
+        <h4>Plugs In Seamlessly</h4>
+        <p>Works alongside existing benefits — 401k, EAP, health insurance. AssetAlign ties it all together into one wellness story.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏆</div>
+        <h4>Differentiates Your Offering</h4>
+        <p>Stand out from brokers offering the same vanilla benefits stack. Financial wellness is the #1 benefit employees say they want.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h4>You Stay in the Loop</h4>
+        <p>Your personal broker dashboard tracks every client you've referred — referrals, statuses, and commissions, all in one place.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h4>Fast to Deploy</h4>
+        <p>We handle onboarding, implementation, and employee communication. Your clients are live in days, not months.</p>
+      </div>
+    </div>
+
+    <a href="#slide-gen" onclick="goTo(9);return false;" style="display:block;max-width:620px;margin:0 auto 22px;text-decoration:none;background:linear-gradient(135deg,rgba(245,166,35,0.14),rgba(245,166,35,0.06));border:1.5px solid rgba(245,166,35,0.5);border-radius:14px;padding:20px 26px;cursor:pointer;transition:transform .12s,box-shadow .12s;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">For your clients</div>
+      <div style="font-family:'Playfair Display',serif;font-size:21px;font-weight:600;color:var(--white);line-height:1.3;">Click here to generate a customized proposal for your client &rarr;</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">Enter your client's company name and your contact info — we'll generate a personalized, shareable proposal in seconds.</div>
+    </a>
+
+    <div class="cta-buttons">
+      <a href="https://www.assetalign.net" class="btn-primary" target="_blank">Schedule a Demo</a>
+      <a href="mailto:support@assetalign.net" class="btn-outline">Contact Us Directly</a>
+    </div>
+
+    <div class="contact-info">
+      <a href="https://www.assetalign.net" target="_blank">www.assetalign.net</a>
+      &nbsp;·&nbsp; 877-421-9444
+      &nbsp;·&nbsp; <a href="mailto:support@assetalign.net">support@assetalign.net</a>
+    </div>
+  </div>
+  <span class="slide-num">9 / 10</span>
+</section>
+
+<!-- ── SLIDE 9: PROPOSAL GENERATOR ── -->
+<section class="slide" id="slide-gen">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 50% 40%, rgba(245,166,35,0.08) 0%, transparent 70%);pointer-events:none;"></div>
+  <div class="gen-inner">
+    <div class="gen-eyebrow">Proposal Builder</div>
+    <h2 class="gen-h2">Generate a <em>customized proposal</em> for your client.</h2>
+    <p class="gen-sub">Enter your client's company name and your contact info — we'll create a personalized, shareable proposal page in seconds.</p>
+
+    <div class="gen-card">
+      <div class="gen-field">
+        <label for="gEmployer">Client / employer name</label>
+        <input type="text" id="gEmployer" placeholder="e.g. Acme Manufacturing" autocomplete="off">
+      </div>
+      <div class="gen-field">
+        <label for="gHeadcount">Approximate # of employees <span class="opt">(optional — pre-loads the calculator)</span></label>
+        <input type="text" id="gHeadcount" placeholder="e.g. 5,000" inputmode="numeric" autocomplete="off">
+      </div>
+      <div class="gen-two">
+        <div class="gen-field">
+          <label for="gBroker">Your name</label>
+          <input type="text" id="gBroker" placeholder="Your full name" autocomplete="name">
+        </div>
+        <div class="gen-field">
+          <label for="gEmail">Your email</label>
+          <input type="email" id="gEmail" placeholder="you@brokerage.com" autocomplete="email">
+        </div>
+      </div>
+
+      <div class="gen-reassure">
+        <div class="ic">&#10003;</div>
+        <p><strong>We won't call your client when you fill this out</strong> — but we will ask for a 20-minute demo with you.</p>
+      </div>
+
+      <button class="gen-btn" onclick="buildProposal()">Create my client's proposal page &rarr;</button>
+      <div class="gen-err" id="gErr">Please enter your client's company name, your name, and your email.</div>
+
+      <div class="gen-result" id="gResult">
+        <h3>Check your inbox &#128231;</h3>
+        <p class="rsub">We just emailed your customized proposal for <strong id="gSentEmp"></strong> to <strong id="gSentTo"></strong>. Forward it to your client whenever you're ready — and we'll reach out to set up your 20-minute demo.</p>
+        <input type="hidden" id="gLink">
+        <a class="gen-mini open" id="gOpen" href="#" target="_blank" rel="noopener">Preview the proposal &#8599;</a>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">10 / 10</span>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.nav-dot');
+
+  function goTo(i) {
+    slides[i].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Future-proof: bind each dot to its actual position so reordering slides can't desync the nav.
+  dots.forEach(function(d,idx){ d.onclick = function(){ goTo(idx); }; });
+
+  // Update active dot on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(slides).indexOf(entry.target);
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[idx]) dots[idx].classList.add('active');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(s => observer.observe(s));
+
+  // ── Other-expenses TYPE + BUILD reveal (slide-expenses) ──
+  (function(){
+    var typed=document.getElementById('expTyped'), cloud=document.getElementById('expCloud');
+    if(!typed||!cloud) return;
+    var TERMS=["Short-Term Disability","Long-Term Disability","Group Life Insurance","Dental & Vision","EAP","Team Training","Professional Development","Student-Loan Debt","Tax Prep","Estate Planning","401(k) Gaps","Financial Education"];
+    var SIZES=[28,22,26,20,32,27,22,19,28,21,24,23], CLS=['g','w','m','w','g','w','m','w','g','m','w','g'], i=0;
+    function typeWord(w,done){var n=0;(function t(){typed.textContent=w.slice(0,n);if(n<=w.length){n++;setTimeout(t,42);}else{setTimeout(done,300);}})();}
+    function land(w,idx){var c=document.createElement('span');c.className='expchip '+CLS[idx%CLS.length];c.style.fontSize=SIZES[idx%SIZES.length]+'px';c.textContent=w;cloud.appendChild(c);}
+    function run(){
+      if(i<TERMS.length){ typeWord(TERMS[i],function(){ land(TERMS[i],i); typed.textContent=''; i++; setTimeout(run,200); }); }
+      else { typeWord("You decide.",function(){ setTimeout(function(){ cloud.classList.add('fade'); typed.textContent=''; setTimeout(function(){ cloud.innerHTML=''; cloud.classList.remove('fade'); i=0; run(); },700); },2800); }); }
+    }
+    run();
+  })();
+
+  // ── Proposal generator (slide 9) ──
+  function slugify(s){return s.trim().replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase();}
+
+  function buildProposal(){
+    var employer=document.getElementById('gEmployer').value.trim();
+    var headRaw=document.getElementById('gHeadcount').value.replace(/[^0-9]/g,'');
+    var broker=document.getElementById('gBroker').value.trim();
+    var bemail=document.getElementById('gEmail').value.trim();
+    var err=document.getElementById('gErr');
+
+    if(!employer||!broker||!bemail||bemail.indexOf('@')<0){ err.classList.add('show'); return; }
+    err.classList.remove('show');
+
+    var ref=slugify(broker)||'broker';
+    var base=new URL('proposal.html', window.location.href);
+    base.searchParams.set('employer',employer);
+    base.searchParams.set('broker',broker);
+    base.searchParams.set('ref',ref);
+    if(headRaw) base.searchParams.set('headcount',headRaw);
+    var link=base.href;
+
+    document.getElementById('gLink').value=link;
+    document.getElementById('gOpen').href=link;
+    document.getElementById('gSentTo').textContent=bemail;
+    document.getElementById('gSentEmp').textContent=employer;
+    document.getElementById('gResult').classList.add('show');
+
+    // 1) Email the branded proposal to the broker's inbox
+    emailjs.send('service_jy3zs68','template_ndk4aes',{
+      to_email:    bemail,
+      to_name:     broker,
+      employer:    employer,
+      broker:      broker,
+      headcount:   headRaw ? parseInt(headRaw,10).toLocaleString() : '',
+      proposal_url:link,
+      subject:     'Your AssetAlign proposal for '+employer,
+      message:     'Hi '+broker+',\n\nYour customized AssetAlign proposal for '+employer+' is ready:\n'+link+'\n\nForward it to your client whenever you\'re ready. We\'ll be in touch to set up a quick 20-minute demo.\n\n— The AssetAlign Team',
+      reply_to:    'support@assetalign.net'
+    }).catch(function(){
+      // Branded template not set up yet (or send failed) — keep the broker unblocked
+      var r=document.getElementById('gResult');
+      r.querySelector('h3').textContent='Your proposal is ready';
+      r.querySelector('.rsub').innerHTML='Open or share your customized proposal for <strong>'+employer+'</strong> below.';
+    });
+
+    // 2) Internal notification to AssetAlign (existing template) — your demo-request trigger
+    emailjs.send('service_jy3zs68','template_a3slvpn',{
+      to_email:'support@assetalign.net',
+      subject:'New broker proposal built — '+employer+' (via '+broker+')',
+      message:'A broker just generated a customized proposal page from the broker deck.\n\n'
+        +'Client / employer: '+employer+'\n'
+        +'Headcount entered: '+(headRaw?parseInt(headRaw,10).toLocaleString():'(not provided)')+'\n'
+        +'Broker name: '+broker+'\n'
+        +'Broker email: '+bemail+'\n'
+        +'Tag (ref): '+ref+'\n'
+        +'Generated link: '+link+'\n\n'
+        +'ACTION: reach out to the broker to schedule a 20-minute demo.',
+      name:broker, email:bemail, reply_to:bemail
+    });
+  }
+</script>
+</body>
+</html>
